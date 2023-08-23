@@ -1,0 +1,24 @@
+:root{
+    --backgroundColor:#eee;
+    --headerHeight:60px;
+    --footerHeight:200px;
+    --menuWidth:300px;
+    --menuWidthClose:230px;
+}
+
+*{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+html,body{margin: 0;width: 100%;height: 100%;}
+
+#app{ width: 100%;height: 100%;overflow: hidden;}
+#app #screen{ display: flex; width: 100%;height: calc(100% - var(--headerHeight));}
+
+#app #header{ display: flex; height: var(--headerHeight); background-color: blue;}
+
+#app #screen #footer{ display: flex; height: var(--footerHeight); background-color: blue;}
+
+#app #screen #menu{ display: flex; width: var(--menuWidth); background-color: red; transition: 2s;height: 100%;}
+
+#app #screen #content{ width: calc(100% - var(--menuWidth));overflow-y: scroll;overflow-x: hidden;}
+#app #screen #content::-webkit-scrollbar{ width:0px}
+
+#app #screen #content #view{ width: 100%; background-color: var(--backgroundColor); min-height: calc(100% - var(--footerHeight));height: fit-content;}
