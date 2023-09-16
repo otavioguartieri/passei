@@ -40,4 +40,7 @@
     </body>
 </html>
 <script>
+    $(`.menu-change`).click(function(){
+        $(this).parent().parent().toggleClass('open');
+    });
 </script>

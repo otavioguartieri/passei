@@ -4,7 +4,9 @@
     --footerHeight:200px;
     --menuWidthOpen:240px;
     --menuWidthClose:90px;
-    --menu-margin:8px;
+    --menuMargin:8px;
+    --menuDelay:300ms;
+    --menuChangeWidth:40px;
 }
 
 *{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
@@ -17,13 +19,18 @@ html,body{margin: 0;width: 100%;height: 100%;}
 
 #app #screen #footer{ display: flex; height: var(--footerHeight); background-color: blue;}
 
-#app #screen #menu{ display: flex; flex-direction: column; min-width: var(--menuWidthClose); background-color: #fff; transition: 2s;height: 100%;border-right: 1px solid #ddd;}
+#app #screen #menu{ display: flex; flex-direction: column; justify-content: space-between; min-width: var(--menuWidthClose); background-color: #fff; transition: var(--menuDelay);height: 100%;border-right: 1px solid #ddd;}
+#app #screen #menu .menu-btns{ display: flex; flex-direction: column;width: 100%;}
 #app #screen #menu.open{min-width: var(--menuWidthOpen);}
 
-#app #screen #menu .menu-item{ color:#bbb; max-width: var(--menuWidthClose); background: #fff; flex-wrap: wrap; display: flex; height: fit-content; flex-direction: column; align-items: center; justify-content: center; }
-#app #screen #menu .menu-item:hover{background-color: #ddd;}
-#app #screen #menu .menu-item-name{width: calc(100% - calc(var(--menu-margin) * 2));border-bottom:1px solid #ccc; text-transform: capitalize;text-align: center; font-size: 10px;margin: 0 var(--menu-margin); padding: 4px 0;}
-#app #screen #menu .menu-item-icon{margin-top:calc(var(--menu-margin) / 2)}
+#app #screen #menu .menu-item.menu-change i{background-color: #eee; transition: 100ms; width: var(--menuChangeWidth);height: var(--menuChangeWidth);display: flex; align-items: center; justify-content: center;border-radius: 100px;margin: 10px 0;}
+#app #screen #menu .menu-item.menu-change:hover i{background-color: #eaeaea;width: calc(var(--menuChangeWidth) + 2px);height: calc(var(--menuChangeWidth) + 2px); margin: 9px 0;}
+#app #screen #menu .menu-item.menu-change:active i{background-color: #e3e3e3;width: calc(var(--menuChangeWidth) - 2px);height: calc(var(--menuChangeWidth) - 2px); margin: 11px 0;}
+#app #screen #menu .menu-item{transition: var(--menuDelay); color:#bbb; max-width: var(--menuWidthClose); background: #fff; flex-wrap: wrap; display: flex; height: fit-content; flex-direction: column; align-items: center; justify-content: center; }
+#app #screen #menu.open .menu-item{ max-width: var(--menuWidthOpen);}
+#app #screen #menu .menu-item:hover{background-color: #f8f8f8;cursor: pointer;}
+#app #screen #menu .menu-item-name{width: calc(100% - calc(var(--menuMargin) * 2));border-bottom:0.5px solid #ccc; text-transform: capitalize;text-align: center; font-size: 10px;margin: 0 var(--menuMargin); padding: 4px 0;}
+#app #screen #menu .menu-item-icon{margin-top:calc(var(--menuMargin) / 2)}
 
 #app #screen #content{ width: calc(100%);overflow-y: scroll;overflow-x: hidden;}
 #app #screen #content::-webkit-scrollbar{ width:0px}
